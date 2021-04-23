@@ -3,7 +3,7 @@
 
 ## Project Description
 
-<img src="">
+<img src="Screen Shot 2021-04-23 at 3.18.33 PM.png">
 
 <p> This project was assigned via MIT xPROs Full Stack Developer Professional Certification. It lists out the bus stops from MIT to Harvard. It has three buttons, one that adds markers to the map to show the relevant bus stops, another to track the buses en route, and one to clear the screen.</p>
 
