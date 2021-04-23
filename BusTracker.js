@@ -73,22 +73,38 @@ geojson.features.forEach(function(marker){
 //---------------------------------------------------------------------------------------
 function tracker(){
 
-  async function run(){
-    // get bus data    
-    let locations = await getBusLocations();
-    console.log(locations);
+  let map_markers = [];
 
-    locations.forEach(function(bus){
+  async function run(){
+    
+    for(let j = 0; j< map_markers.length; j++){
+      map_markers[j].remove();
+    }
+
+    for(let k = (map_markers.length - 1); k >= 0; k--){
+      map_markers.pop();
+    }
+
+    locations = await getBusLocations(); // get bus data 
+    
+    // creates div for buses, adds marker, and popup label
+    for(let i = 0; i < locations.length; i++){
       let el = document.createElement('div');
       el.className = 'bus';
 
-      new mapboxgl.Marker(el)
-        .setLngLat([-71.05812,42.34137])
-        //.setPopup(new mapboxgl.Popup({offset: 25})
-        //  .setHTML('<h3>' + bus.id + '</h3>')
-        //)
-        .addTo(map);
-    })
+      bus_ID = locations[i].attributes.label;
+      label = "<h3>" + "bus ID" + ": " + bus_ID + "</h3>";
+
+      map_markers.push (new mapboxgl.Marker(el)
+        .setLngLat([locations[i].attributes.longitude, locations[i].attributes.latitude])
+        .setPopup(new mapboxgl.Popup({offset: 25})
+          .setHTML(label)
+        )
+        .addTo(map));
+    };
+
+    console.log(locations);
+
     setTimeout(run, 15000);
   }
 
@@ -102,12 +118,10 @@ function tracker(){
 
   run();
   }
-  //---------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------
 // display bus stops upon client click
 //---------------------------------------------------------------------------------------
-
 let mapMarkers = []
 
 function move(){
@@ -119,7 +133,3 @@ function move(){
     mapMarkers.push(markers);
   }
 }
-
-
-
-
