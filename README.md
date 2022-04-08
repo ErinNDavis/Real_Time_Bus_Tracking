@@ -21,7 +21,6 @@
 ## Support
 Feel free to contact me: <br>
 <a href="https://www.linkedin.com/in/erin-davis-7188211a5/">LinkedIn</a><br>
-<a href="https://twitter.com/ErinDav25425908">Twitter</a><br>
 email: davise25@winthrop.edu 
 
 ## License 
